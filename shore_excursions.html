@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shore Excursions | Yaad Vybz Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-green': '#009543',
+                        'primary-yellow': '#FFD700',
+                        'primary-black': '#232323',
+                        'accent-blue': '#00BFFF',
+                        'accent-orange': '#FFA500',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .header-bg {
+            background-image: url('https://images.unsplash.com/photo-1579781403267-28d8495d2c67?q=80&w=2832&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .attraction-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .bg-opacity-80 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans text-primary-black">
+
+    <nav id="navbar" class="fixed top-0 z-50 w-full bg-primary-green bg-opacity-90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-white transition-all duration-300 hover:text-primary-yellow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-primary-yellow">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625.75a.75.75 0 00-1.233.916l1.09 1.636a.75.75 0 101.233-.916l-1.09-1.636zM15 3.375a.75.75 0 00-.916-1.233l-1.636 1.09a.75.75 0 00.916 1.233l1.636-1.09zM4.375 9a.75.75 0 00-1.233-.916l-1.636 1.09a.75.75 0 00.916 1.233l1.636-1.09zM3.375 15a.75.75 0 00-1.233.916l1.09 1.636a.75.75 0 101.233-.916l-1.09-1.636zM9 19.625a.75.75 0 00-.916 1.233l-1.636-1.09a.75.75 0 00.916-1.233l1.636 1.09zM15 20.625a.75.75 0 001.233-.916l-1.09-1.636a.75.75 0 00-1.233.916l1.09 1.636zM20.625 15a.75.75 0 001.233-.916l-1.09-1.636a.75.75 0 00-1.233.916l1.09 1.636zM19.625 9a.75.75 0 00-1.233.916l1.636 1.09a.75.75 0 00.916-1.233l-1.636-1.09z" clip-rule="evenodd" />
+                </svg>
+                <span>Yaad Vybz Tours</span>
+            </a>
+            <div class="hidden space-x-8 md:flex">
+                <a href="index.html#tours" class="text-white hover:text-primary-yellow transition-colors duration-300">Tours</a>
+                <a href="index.html#airport-transfers" class="text-white hover:text-primary-yellow transition-colors duration-300">Airport Transfers</a>
+                <a href="shore_excursions.html" class="text-primary-yellow hover:text-white transition-colors duration-300">Shore Excursions</a>
+                <a href="private_excursions.html" class="text-white hover:text-primary-yellow transition-colors duration-300">Private Excursions</a>
+                <a href="index.html#about" class="text-white hover:text-primary-yellow transition-colors duration-300">About Us</a>
+                <a href="index.html#contact" class="text-white hover:text-primary-yellow transition-colors duration-300">Contact</a>
+                <a href="#" onclick="showBookingForm('All Tours', 0)" class="rounded-full bg-primary-yellow px-4 py-2 font-bold text-primary-black transition-colors duration-300 hover:bg-white hover:shadow-lg">Book Now</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden flex-col items-center space-y-4 p-4 md:hidden bg-primary-green bg-opacity-90">
+            <a href="index.html#tours" class="text-white hover:text-primary-yellow transition-colors duration-300">Tours</a>
+            <a href="index.html#airport-transfers" class="text-white hover:text-primary-yellow transition-colors duration-300">Airport Transfers</a>
+            <a href="shore_excursions.html" class="text-primary-yellow hover:text-white transition-colors duration-300">Shore Excursions</a>
+            <a href="private_excursions.html" class="text-white hover:text-primary-yellow transition-colors duration-300">Private Excursions</a>
+            <a href="index.html#about" class="text-white hover:text-primary-yellow transition-colors duration-300">About Us</a>
+            <a href="index.html#contact" class="text-white hover:text-primary-yellow transition-colors duration-300">Contact</a>
+            <a href="#" onclick="showBookingForm('All Tours', 0)" class="w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-white hover:shadow-lg">Book Now</a>
+        </div>
+    </nav>
+
+    <main>
+        <header class="relative flex h-[60vh] items-center justify-center p-4 text-center text-white header-bg">
+            <div class="absolute inset-0 bg-primary-black opacity-50"></div>
+            <div class="relative z-10 mx-auto max-w-4xl space-y-6 rounded-3xl bg-primary-black bg-opacity-60 p-8 shadow-2xl backdrop-blur-sm md:p-16">
+                <h1 class="text-4xl font-extrabold tracking-tight md:text-6xl">Shore Excursions</h1>
+                <p class="text-lg md:text-xl">Discover the best of Jamaica from the Montego Bay and Falmouth cruise piers.</p>
+                <div class="flex flex-col items-center">
+                    <label for="pier-select" class="mb-2 block text-lg font-medium text-white">Select your cruise pier:</label>
+                    <select id="pier-select" class="w-full max-w-sm rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50 text-black">
+                        <option value="montegobay">Montego Bay Pier</option>
+                        <option value="falmouth">Falmouth Pier</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <section id="excursion-tours" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 id="section-title" class="mb-12 text-center text-4xl font-extrabold text-primary-black md:text-5xl">Montego Bay Tours</h2>
+                <div id="tours-container" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1618641986557-417b1191060a?q=80&w=2864&auto=format&fit=crop" alt="A group of people holding hands and climbing the terraced rocks of Dunn's River Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Dunn's River Falls</h3>
+                            <p class="text-gray-500">Climb the famous 600-foot cascading waterfall in a thrilling, guided adventure. A true Jamaican classic.</p>
+                            <button onclick="showBookingForm('Dunn\'s River Falls', 80)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1549488346-bf523351d723?q=80&w=2940&auto=format&fit=crop" alt="A person climbing on the rocks near a vibrant blue natural pool at Blue Hole Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Blue Hole and Ocho Cultural Tour</h3>
+                            <p class="text-gray-500">Dive into the stunning blue waters of this secluded waterfall, followed by a cultural exploration of Ocho Rios.</p>
+                            <button onclick="showBookingForm('Blue Hole and Ocho Cultural Tour', 75)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1601737482484-88439366e6c8?q=80&w=2940&auto=format&fit=crop" alt="The famous Doctor's Cave Beach with its clear blue water, white sand, and palm trees." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Doctor's Cave Beach & MBJ Highlights</h3>
+                            <p class="text-gray-500">Relax on the pristine sands of Doctor's Cave Beach and explore the best cultural highlights of Montego Bay.</p>
+                            <button onclick="showBookingForm('Doctor\'s Cave Beach & MBJ Highlights', 50)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1595168019084-3705353528b9?q=80&w=2835&auto=format&fit=crop" alt="Placeholder image for a bird farm tour." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Mini Bird Farm & Herb Tour</h3>
+                            <p class="text-gray-500">A peaceful tour of a local bird farm and a fascinating exploration of Jamaica's medicinal herbs.</p>
+                            <button onclick="showBookingForm('Mini Bird Farm & Herb Tour', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1601737482484-88439366e6c8?q=80&w=2940&auto=format&fit=crop" alt="Placeholder image for Rosehall Great House." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Rosehall & Greenwood Great House</h3>
+                            <p class="text-gray-500">Step back in time to explore two of Jamaica's most magnificent and historic plantation houses.</p>
+                            <button onclick="showBookingForm('Rosehall & Greenwood Great House', 85)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1616016149455-89f928e46955?q=80&w=2942&auto=format&fit-crop" alt="Placeholder image for Green Grotto Caves." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Green Grotto Caves</h3>
+                            <p class="text-gray-500">Descend into Jamaica's fascinating underworld to explore a labyrinth of limestone caves and a subterranean lake.</p>
+                            <button onclick="showBookingForm('Green Grotto Caves', 70)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1592398517277-28d8b4e724a2?q=80&w=2835&auto=format&fit=crop" alt="Placeholder image for Swamp Safari." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Swamp Safari & Green Grotto</h3>
+                            <p class="text-gray-500">Get up close with crocodiles and other wildlife at Swamp Safari, followed by a mysterious tour of the Green Grotto Caves.</p>
+                            <button onclick="showBookingForm('Swamp Safari & Green Grotto', 95)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1528643564506-641578335350?q=80&w=2835&auto=format&fit=crop" alt="Placeholder image for Rastafari Village." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Rastafari Village Cultural Tour</h3>
+                            <p class="text-gray-500">Immerse yourself in the Rastafarian way of life, learning about their beliefs, music, and traditions in an authentic village setting.</p>
+                            <button onclick="showBookingForm('Rastafari Village Cultural Tour', 75)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl montegobay-tour">
+                        <img src="https://images.unsplash.com/photo-1627915570889-a292d3122c60?q=80&w=2835&auto=format&fit=crop" alt="Placeholder image for Historical Falmouth Heritage Tour." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Historical Falmouth Heritage Tour</h3>
+                            <p class="text-gray-500">Explore the rich history and well-preserved Georgian architecture of the town of Falmouth.</p>
+                            <button onclick="showBookingForm('Historical Falmouth Heritage Tour', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1618641986557-417b1191060a?q=80&w=2864&auto=format&fit=crop" alt="A group of people holding hands and climbing the terraced rocks of Dunn's River Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Dunn's River Falls</h3>
+                            <p class="text-gray-500">Climb the famous 600-foot cascading waterfall in a thrilling, guided adventure. A true Jamaican classic.</p>
+                            <button onclick="showBookingForm('Dunn\'s River Falls', 80)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1549488346-bf523351d723?q=80&w=2940&auto=format&fit-crop" alt="A person climbing on the rocks near a vibrant blue natural pool at Blue Hole Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Blue Hole and Ocho Cultural Tour</h3>
+                            <p class="text-gray-500">Dive into the stunning blue waters of this secluded waterfall, followed by a cultural exploration of Ocho Rios.</p>
+                            <button onclick="showBookingForm('Blue Hole and Ocho Cultural Tour', 75)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1601737482484-88439366e6c8?q=80&w=2940&auto=format&fit-crop" alt="The famous Doctor's Cave Beach with its clear blue water, white sand, and palm trees." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Doctor's Cave Beach & MBJ Highlights</h3>
+                            <p class="text-gray-500">Relax on the pristine sands of Doctor's Cave Beach and explore the best cultural highlights of Montego Bay.</p>
+                            <button onclick="showBookingForm('Doctor\'s Cave Beach & MBJ Highlights', 50)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1595168019084-3705353528b9?q=80&w=2835&auto=format&fit-crop" alt="Placeholder image for a bird farm tour." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Mini Bird Farm & Herb Tour</h3>
+                            <p class="text-gray-500">A peaceful tour of a local bird farm and a fascinating exploration of Jamaica's medicinal herbs.</p>
+                            <button onclick="showBookingForm('Mini Bird Farm & Herb Tour', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1601737482484-88439366e6c8?q=80&w=2940&auto=format&fit-crop" alt="Placeholder image for Rosehall Great House." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Rosehall & Greenwood Great House</h3>
+                            <p class="text-gray-500">Step back in time to explore two of Jamaica's most magnificent and historic plantation houses.</p>
+                            <button onclick="showBookingForm('Rosehall & Greenwood Great House', 85)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1616016149455-89f928e46955?q=80&w=2942&auto=format&fit-crop" alt="Placeholder image for Green Grotto Caves." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Green Grotto Caves</h3>
+                            <p class="text-gray-500">Descend into Jamaica's fascinating underworld to explore a labyrinth of limestone caves and a subterranean lake.</p>
+                            <button onclick="showBookingForm('Green Grotto Caves', 70)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1592398517277-28d8b4e724a2?q=80&w=2835&auto=format&fit-crop" alt="Placeholder image for Swamp Safari." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Swamp Safari & Green Grotto</h3>
+                            <p class="text-gray-500">Get up close with crocodiles and other wildlife at Swamp Safari, followed by a mysterious tour of the Green Grotto Caves.</p>
+                            <button onclick="showBookingForm('Swamp Safari & Green Grotto', 95)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl falmouth-tour hidden">
+                        <img src="https://images.unsplash.com/photo-1528643564506-641578335350?q=80&w=2835&auto=format&fit-crop" alt="Placeholder image for Historical Falmouth Heritage Tour." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Historical Falmouth Heritage Tour</h3>
+                            <p class="text-gray-500">Explore the rich history and well-preserved Georgian architecture of the town of Falmouth.</p>
+                            <button onclick="showBookingForm('Historical Falmouth Heritage Tour', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        </main>
+
+    <footer class="bg-primary-black py-12 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="mb-4 text-2xl font-bold">Yaad Vybz Tours</h4>
+            <p class="mb-4 text-gray-400">Montego Bay, Jamaica | info@yaadvybztours.com</p>
+            <div class="mb-8 flex justify-center space-x-6">
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.761s.784-1.761 1.75-1.761 1.75.79 1.75 1.761-.784 1.761-1.75 1.761zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.042 5.869c-.832.197-.735-.494-2.518-.466-2.77-.041-3.692-.619-3.931-1.127-.145-.306-.328-.31-.628-.31-.351 0-.585.045-.69.213-.418.665-.898 1.487-1.391 2.275-.245.385-.505.796-.799 1.157-.798.995-1.63 1.96-2.617 2.802l-1.636-1.564c-.201-.192-.489-.317-.792-.317h-1.428c-.288 0-.563.125-.75.344-.188.219-.283.518-.26.837.284 3.782.99 7.025 5.877 7.025 3.328 0 4.155-1.426 4.155-1.426v.292c0 .285-.125.556-.347.74-.222.184-.52.277-.834.277h-3.375c-.285 0-.556-.125-.74-.347-.184-.222-.277-.52-.277-.834v-3.75c0-.285.125-.556.347-.74.222-.184.52-.277.834-.277h3.75c1.23 0 2.28-.432 2.736-.931.456-.499.684-1.258.684-2.275v-.063c0-.188.086-.367.245-.491.159-.124.36-.188.56-.188h.69c.2-.001.385.086.51.245.125.159.188.36.188.56v.69c0 .693-.153 1.346-.437 1.956-.284.609-.675 1.144-1.171 1.604l.115.155c.427.568 1.054 1.059 1.77 1.458.716.399 1.517.697 2.378.883l.233.05c.47.103.957.155 1.455.155h.388c.277-.001.54-.121.72-.325.18-.205.27-.478.256-.755l-.16-3.253c-.004-.085-.015-.17-.034-.255l-.347-1.579c.007-.058.008-.118.008-.178-.002-.533-.186-1.01-.55-1.438-.364-.428-.847-.74-1.456-.932-.609-.191-1.285-.295-2.012-.315z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.202 7.257c-.503.746-1.14 1.425-1.884 1.996.657 1.642.528 3.53-.404 5.097-1.31 2.191-3.682 3.868-6.059 4.34-1.092.217-2.22.31-3.34.288-1.574-.031-2.923-.522-4.14-1.396.953.153 1.93.072 2.827-.225 1.656-.554 2.83-1.896 3.037-3.64.08-.667-.112-1.35-.494-1.928-.275-.418-.616-.777-.996-1.109.176-.013.355-.022.533-.027 1.171-.03 2.298-.403 3.32-1.077 1.258-.838 2.062-2.164 2.378-3.771.218-1.097.135-2.225-.23-3.298l-.132-.38c.677 1.002.946 2.067.89 3.09-.047.857-.29 1.67-.714 2.373.493-.053.985-.053 1.478 0z" />
+                    </svg>
+                </a>
+                </div>
+            <p class="text-gray-400">&copy; 2025 Yaad Vybz Tours. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary-black bg-opacity-70 backdrop-blur-sm">
+        <div class="w-full max-w-lg rounded-3xl bg-white p-8 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 id="tour-title" class="text-2xl font-bold text-primary-black">Book Tour</h3>
+                <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+            <form id="booking-form" class="mt-6 space-y-4">
+                <input type="hidden" id="tour-price" value="">
+                <div>
+                    <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                </div>
+                <div>
+                    <label for="pickup-location" class="block text-sm font-medium text-gray-700">Pickup Location (Hotel/Villa)</label>
+                    <input type="text" id="pickup-location" name="pickup-location" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                </div>
+                <div>
+                    <label for="excursion-date" class="block text-sm font-medium text-gray-700">Date of Excursion</label>
+                    <input type="date" id="excursion-date" name="excursion-date" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="w-1/2">
+                        <label for="adults" class="block text-sm font-medium text-gray-700">Adults (12+)</label>
+                        <select id="adults" name="adults" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="w-1/2">
+                        <label for="children" class="block text-sm font-medium text-gray-700">Children (4-11)</label>
+                        <select id="children" name="children" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center font-bold text-lg mt-4">
+                    Total Cost: $<span id="total-cost">0.00</span>
+                </div>
+                <div class="text-center text-sm text-gray-500">
+                    <p>Children ages 0-3 are free.</p>
+                    <p>Children ages 4-11 are 30% off the adult price.</p>
+                </div>
+                <button type="submit" class="w-full rounded-full bg-primary-green py-3 font-bold text-white transition-colors duration-300 hover:bg-primary-black">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary-black bg-opacity-70 backdrop-blur-sm">
+        <div class="w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl">
+            <div class="flex justify-end">
+                <button onclick="closePaymentModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+            <div id="confirmation-message" class="space-y-4">
+                <h3 class="text-3xl font-bold text-primary-green">Thank you for your booking, <span id="guest-name"></span>!</h3>
+                <p class="text-lg text-gray-700">Your reservation has been confirmed.</p>
+                <p class="text-gray-600">We look forward to seeing you!</p>
+            </div>
+            <p class="mt-6 text-gray-600">Total Price: <span id="payment-total-price" class="font-bold text-xl"></span></p>
+            <p class="mt-4 text-gray-700">Please complete your payment:</p>
+            <div class="mt-6 space-y-4">
+                <a href="#" class="inline-block w-full rounded-full bg-primary-yellow py-3 font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">
+                    Pay with Stripe
+                </a>
+                <a href="https://www.paypal.com/instantcommerce/checkout/J7U33678H4B7G" target="_blank" class="inline-block w-full rounded-full bg-blue-600 py-3 font-bold text-white transition-colors duration-300 hover:bg-blue-700">
+                    <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/logo-paypal-color-292x94.png" alt="Pay with PayPal" class="mx-auto h-8">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const pierSelect = document.getElementById('pier-select');
+        const toursContainer = document.getElementById('tours-container');
+        const sectionTitle = document.getElementById('section-title');
+
+        function toggleTours() {
+            const selectedPier = pierSelect.value;
+            const tours = toursContainer.querySelectorAll('.attraction-card');
+
+            sectionTitle.textContent = selectedPier === 'montegobay' ? 'Montego Bay Tours' : 'Falmouth Tours';
+
+            tours.forEach(tour => {
+                if (tour.classList.contains(selectedPier + '-tour')) {
+                    tour.classList.remove('hidden');
+                } else {
+                    tour.classList.add('hidden');
+                }
+            });
+        }
+
+        pierSelect.addEventListener('change', toggleTours);
+        toggleTours(); // Initial call to show the correct tours
+
+        // Re-adding the modal script logic since it's a new page
+        const bookingModal = document.getElementById('booking-modal');
+        const tourTitle = document.getElementById('tour-title');
+        const tourPriceInput = document.getElementById('tour-price');
+        const totalCostSpan = document.getElementById('total-cost');
+        const adultsSelect = document.getElementById('adults');
+        const childrenSelect = document.getElementById('children');
+        const fullNameInput = document.getElementById('full-name');
+        const paymentModal = document.getElementById('payment-modal');
+        const guestNameSpan = document.getElementById('guest-name');
+        const paymentTotalPrice = document.getElementById('payment-total-price');
+
+        window.showBookingForm = function(tourName, adultPrice) {
+            tourTitle.textContent = 'Book ' + tourName;
+            tourPriceInput.value = adultPrice;
+            adultsSelect.value = '1';
+            childrenSelect.value = '0';
+            calculateTotalCost();
+            bookingModal.classList.remove('hidden');
+            bookingModal.classList.add('flex');
+        }
+
+        adultsSelect.addEventListener('change', calculateTotalCost);
+        childrenSelect.addEventListener('change', calculateTotalCost);
+
+        function calculateTotalCost() {
+            const adultPrice = parseFloat(tourPriceInput.value);
+            const numAdults = parseInt(adultsSelect.value);
+            const numChildren = parseInt(childrenSelect.value);
+            const childPrice = adultPrice * 0.70;
+            const total = (numAdults * adultPrice) + (numChildren * childPrice);
+            totalCostSpan.textContent = total.toFixed(2);
+        }
+
+        window.closeBookingModal = function() {
+            bookingModal.classList.add('hidden');
+            bookingModal.classList.remove('flex');
+        }
+
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const guestName = fullNameInput.value.split(' ')[0];
+            const totalCost = totalCostSpan.textContent;
+            guestNameSpan.textContent = guestName;
+            paymentTotalPrice.textContent = '$' + totalCost;
+            closeBookingModal();
+            paymentModal.classList.remove('hidden');
+            paymentModal.classList.add('flex');
+        });
+
+        window.closePaymentModal = function() {
+            paymentModal.classList.add('hidden');
+            paymentModal.classList.remove('flex');
+        }
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    });
+</script>
+
+</html>

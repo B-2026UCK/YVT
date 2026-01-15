@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaad Vybz Tours | Experience the Vybz of Jamaica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-green': '#009543',
+                        'primary-yellow': '#FFD700',
+                        'primary-black': '#232323',
+                        'accent-blue': '#00BFFF',
+                        'accent-orange': '#FFA500',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax-bg {
+            background-image: url('https://images.unsplash.com/photo-1549488346-bf523351d723?q=80&w=2940&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .cta-bg {
+            background-image: url('https://images.unsplash.com/photo-1579781403267-28d8495d2c67?q=80&w=2832&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .attraction-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .bg-opacity-80 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans text-primary-black">
+
+    <nav id="navbar" class="fixed top-0 z-50 w-full bg-primary-green bg-opacity-90 backdrop-blur-md shadow-lg transition-all duration-300">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <a href="#home" class="flex items-center space-x-2 text-2xl font-bold text-white transition-all duration-300 hover:text-primary-yellow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8 text-primary-yellow">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625.75a.75.75 0 00-1.233.916l1.09 1.636a.75.75 0 101.233-.916l-1.09-1.636zM15 3.375a.75.75 0 00-.916-1.233l-1.636 1.09a.75.75 0 00.916 1.233l1.636-1.09zM4.375 9a.75.75 0 00-1.233-.916l-1.636 1.09a.75.75 0 00.916 1.233l1.636-1.09zM3.375 15a.75.75 0 00-1.233.916l1.09 1.636a.75.75 0 101.233-.916l-1.09-1.636zM9 19.625a.75.75 0 00-.916 1.233l-1.636-1.09a.75.75 0 00.916-1.233l1.636 1.09zM15 20.625a.75.75 0 001.233-.916l-1.09-1.636a.75.75 0 00-1.233.916l1.09 1.636zM20.625 15a.75.75 0 001.233-.916l-1.09-1.636a.75.75 0 00-1.233.916l1.09 1.636zM19.625 9a.75.75 0 00-1.233.916l1.636 1.09a.75.75 0 00.916-1.233l-1.636-1.09z" clip-rule="evenodd" />
+                </svg>
+                <span>Yaad Vybz Tours</span>
+            </a>
+            <div class="hidden space-x-8 md:flex">
+                <a href="#tours" class="text-white hover:text-primary-yellow transition-colors duration-300">Tours</a>
+                <a href="#about" class="text-white hover:text-primary-yellow transition-colors duration-300">About Us</a>
+                <a href="#contact" class="text-white hover:text-primary-yellow transition-colors duration-300">Contact</a>
+                <a href="#" onclick="showBookingForm('All Tours', 0)" class="rounded-full bg-primary-yellow px-4 py-2 font-bold text-primary-black transition-colors duration-300 hover:bg-white hover:shadow-lg">Book Now</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden flex-col items-center space-y-4 p-4 md:hidden bg-primary-green bg-opacity-90">
+            <a href="#tours" class="text-white hover:text-primary-yellow transition-colors duration-300">Tours</a>
+            <a href="#about" class="text-white hover:text-primary-yellow transition-colors duration-300">About Us</a>
+            <a href="#contact" class="text-white hover:text-primary-yellow transition-colors duration-300">Contact</a>
+            <a href="#" onclick="showBookingForm('All Tours', 0)" class="w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-white hover:shadow-lg">Book Now</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="relative flex h-screen items-center justify-center p-4 text-center text-white parallax-bg">
+            <div class="absolute inset-0 bg-primary-black opacity-50"></div>
+            <div class="relative z-10 mx-auto max-w-4xl space-y-6 rounded-3xl bg-primary-black bg-opacity-60 p-8 shadow-2xl backdrop-blur-sm md:p-16">
+                <h1 class="text-4xl font-extrabold tracking-tight md:text-6xl">Experience the Real Vybz of Jamaica!</h1>
+                <p class="text-lg md:text-xl">Discover the island's hidden gems and most iconic attractions with our expert guides. Let the adventure begin.</p>
+                <a href="#tours" class="inline-block transform rounded-full bg-accent-blue px-8 py-4 font-bold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-opacity-90">Explore Our Tours</a>
+            </div>
+        </section>
+
+        <section id="tours" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="mb-4 text-center text-4xl font-extrabold text-primary-black md:text-5xl">Top 10 Must-Do Attractions</h2>
+                <p class="mb-12 text-center text-lg text-gray-600 md:text-xl">From cascading waterfalls to glowing lagoons, Jamaica has it all.</p>
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1601737482484-88439366e6c8?q=80&w=2940&auto=format&fit=crop" alt="The famous Doctor's Cave Beach with its clear blue water, white sand, and palm trees." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Doctor's Cave Beach</h3>
+                            <p class="text-gray-500">Relax and soak up the sun on one of Montego Bay's most famous and picturesque beaches. The calm, warm waters, which are fed by mineral springs, are said to have healing properties. This is a perfect spot for a rejuvenating swim, snorkeling in the clear waters, or simply lounging with a tropical drink in hand. It's a slice of paradise that offers a tranquil escape from the world.</p>
+                            <button onclick="showBookingForm('Doctor\'s Cave Beach', 50)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1616016149455-89f928e46955?q=80&w=2942&auto=format&fit=crop" alt="People swimming in the Luminous Lagoon at night, creating a magical blue glow in the water." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Luminous Lagoon</h3>
+                            <p class="text-gray-500">Embark on a truly magical boat tour after sunset to witness one of the most incredible natural wonders in the world. As the boat moves through the water, millions of tiny bioluminescent organisms glow a brilliant turquoise. You can even swim in the lagoon and watch as your every movement creates a shimmering light show. This is a one-of-a-kind, unforgettable night adventure that feels like stepping into a fairytale.</p>
+                            <button onclick="showBookingForm('Luminous Lagoon', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1549488346-bf523351d723?q=80&w=2940&auto=format&fit=crop" alt="A person climbing on the rocks near a vibrant blue natural pool at Blue Hole Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Blue Hole Falls</h3>
+                            <p class="text-gray-500">Tucked away in the hills of Ocho Rios, the Blue Hole is an adventurous paradise. Hike through the lush rainforest, swing from a rope into the vibrant blue pools, and climb hidden waterfalls. Unlike more crowded attractions, the Blue Hole offers a more serene and authentic experience. It's a true off-the-beaten-path adventure that promises excitement and stunning, pristine scenery.</p>
+                            <button onclick="showBookingForm('Blue Hole Falls', 75)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1618641986557-417b1191060a?q=80&w=2864&auto=format&fit=crop" alt="A group of people holding hands and climbing the terraced rocks of Dunn's River Falls." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Dunn's River Falls</h3>
+                            <p class="text-gray-500">Join a human chain to climb the world-famous 600-foot cascading waterfall, a signature Jamaican adventure. The terraced rocks and natural pools offer a thrilling challenge and a refreshing reward. This iconic landmark is a must-do for visitors of all ages, with experienced guides to help you every step of the way. It's an exhilarating and unforgettable climb to the top.</p>
+                            <button onclick="showBookingForm('Dunn\'s River Falls', 80)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1595168019084-3705353528b9?q=80&w=2835&auto=format&fit=crop" alt="The front of the Bob Marley Museum in Kingston, with a vibrant mural of the reggae legend on the wall." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Bob Marley Museum</h3>
+                            <p class="text-gray-500">Step into the world of the "King of Reggae." This museum, located at his former home and recording studio in Kingston, offers a deep dive into Bob Marley's life, music, and legacy. Walk through the rooms where he lived, see his gold and platinum records, and feel the spiritual vibes of this historical site. It’s a powerful and cultural journey for any fan of reggae music and Jamaican history.</p>
+                            <button onclick="showBookingForm('Bob Marley Museum', 65)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1592398517277-28d8b4e724a2?q=80&w=2835&auto=format&fit=crop" alt="A view of the clifftop Rick's Cafe in Negril, with people watching a diver jump into the water." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Rick's Cafe</h3>
+                            <p class="text-gray-500">End your day with a spectacular sunset at Negril's famous clifftop bar. Watch daring locals and visitors alike take the plunge from the cliffs into the Caribbean Sea. With live reggae music and delicious food, it's the perfect place to unwind and experience the vibrant Negril vibe. Whether you're a thrill-seeker or just want to enjoy the view, Rick's Cafe is an essential Jamaican experience.</p>
+                            <button onclick="showBookingForm('Rick\'s Cafe', 45)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1528643564506-641578335350?q=80&w=2835&auto=format&fit=crop" alt="The cascading waterfalls and natural pools at YS Falls, surrounded by lush vegetation." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">YS Falls</h3>
+                            <p class="text-gray-500">Escape to this lush, private estate in the countryside to find a magnificent series of seven cascading waterfalls. You can swim in the natural pools, swing from a Tarzan rope, or simply relax in the peaceful gardens. Located away from the main tourist hubs, YS Falls offers a more serene and intimate experience. A refreshing and less crowded alternative for a day of natural beauty and relaxation.</p>
+                            <button onclick="showBookingForm('YS Falls', 70)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1627915570889-a292d3122c60?q=80&w=2835&auto=format&fit=crop" alt="A picture of the long, sandy stretch of Negril's Seven Mile Beach with calm, clear water and boats in the distance." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Seven Mile Beach</h3>
+                            <p class="text-gray-500">Stroll along the world-renowned Seven Mile Beach in Negril, famous for its perfect white sand and calm, clear Caribbean waters. This stunning beach is lined with resorts, local bars, and craft shops, offering a mix of relaxation and local culture. Find a quiet spot to sunbathe or explore the local scene. This is the quintessential Jamaican beach day, perfect for a long, leisurely walk or a refreshing dip.</p>
+                            <button onclick="showBookingForm('Seven Mile Beach', 55)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1610486676118-245c1f016e3c?q=80&w=2835&auto=format&fit=crop" alt="A person on the rainforest bobsled ride at Mystic Mountain, zipping through the trees." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Mystic Mountain</h3>
+                            <p class="text-gray-500">Get your adrenaline pumping at this rainforest adventure park. Begin with a scenic chairlift ride over the canopy for breathtaking views of the Caribbean Sea and lush landscape. Then, choose your adventure: fly through the trees on a thrilling zipline or take a unique bobsled ride through the Jamaican rainforest, inspired by the Jamaican bobsled team. It's an exciting experience for the whole family.</p>
+                            <button onclick="showBookingForm('Mystic Mountain', 90)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                    <div class="attraction-card overflow-hidden rounded-3xl bg-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1579781403267-28d8495d2c67?q=80&w=2832&auto=format&fit=crop" alt="Floyd's Pelican Bar, a rustic wooden bar built on a sandbar a quarter-mile out at sea." class="h-64 w-full object-cover">
+                        <div class="p-6">
+                            <h3 class="mb-2 text-2xl font-bold text-primary-green">Floyd's Pelican Bar</h3>
+                            <p class="text-gray-500">Journey out on a small boat to discover this rustic bar built entirely from driftwood, perched on a sandbar a quarter-mile out at sea. Enjoy a cold drink, swim in the shallow, clear water, and experience a one-of-a-kind bar that is as famous as it is unique. It's the perfect place to relax, meet new people, and soak in the laid-back Jamaican spirit.</p>
+                            <button onclick="showBookingForm('Floyd\'s Pelican Bar', 60)" class="mt-4 block w-full rounded-full bg-primary-yellow px-4 py-2 text-center font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">Book Tour</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="bg-primary-yellow py-16 md:py-24">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="mb-4 text-4xl font-extrabold text-primary-black md:text-5xl">Why Choose Yaad Vybz Tours?</h2>
+                <p class="mb-12 text-lg text-gray-700 md:text-xl">We're dedicated to providing an authentic, safe, and unforgettable Jamaican experience.</p>
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex flex-col items-center rounded-2xl bg-white p-6 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-primary-green">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-primary-black">Experienced Guides</h3>
+                        <p class="mt-2 text-center text-gray-500">Our local guides know the island inside and out, ensuring a safe and authentic journey.</p>
+                    </div>
+                    <div class="flex flex-col items-center rounded-2xl bg-white p-6 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-primary-green">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.01 60.01 0 0115.603 2.956.75.75 0 00.992-.41l1.52-3.8a.75.75 0 00-.41-.992c-.89-.35-.89-.35-3.806-1.517m0 0a8.7 8.7 0 01-5.85-3.375c.09-.756.124-1.542.124-2.348v-.373c0-1.002-.58-1.996-1.59-2.636a1.251 1.251 0 01-2.244-.75l-.973-2.607a.75.75 0 00-.987-1.026l-1.93-.965A.75.75 0 002.25 4.885v10.36c0 .75.143 1.487.41 2.185m7.5-10.732a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM19.5 21a2.25 2.25 0 002.25-2.25V15a.75.75 0 00-.75-.75h-2.25a.75.75 0 00-.75.75v3.75c0 1.24.582 2.32 1.5 3.05a.75.75 0 001.002-.18zM18.75 14.25h.008v.008h-.008v-.008z" />
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-primary-black">Best Price Guarantee</h3>
+                        <p class="mt-2 text-center text-gray-500">We offer competitive rates without compromising on the quality of your tour experience.</p>
+                    </div>
+                    <div class="flex flex-col items-center rounded-2xl bg-white p-6 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-primary-green">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-primary-black">Seamless Booking</h3>
+                        <p class="mt-2 text-center text-gray-500">Our simple and secure online process lets you book your adventure in just a few clicks.</p>
+                    </div>
+                    <div class="flex flex-col items-center rounded-2xl bg-white p-6 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-12 w-12 text-primary-green">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="mt-4 text-xl font-bold text-primary-black">24/7 Support</h3>
+                        <p class="mt-2 text-center text-gray-500">We're always here to help you, from the moment you book until the end of your tour.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="flex items-center justify-center p-8 md:p-16 cta-bg">
+            <div class="relative z-10 mx-auto max-w-2xl rounded-3xl bg-primary-black bg-opacity-70 p-8 text-center text-white shadow-2xl backdrop-blur-sm md:p-12">
+                <h2 class="mb-4 text-3xl font-bold md:text-4xl">Ready to Feel the Vybz?</h2>
+                <p class="mb-8 text-lg md:text-xl">Contact us to start planning your perfect Jamaican tour package today!</p>
+                <button onclick="showContactForm()" class="inline-block transform rounded-full bg-accent-orange px-8 py-4 font-bold uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-opacity-90">Get in Touch</button>
+            </div>
+        </section>
+
+        <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary-black bg-opacity-70 backdrop-blur-sm">
+            <div class="w-full max-w-lg rounded-3xl bg-white p-8 shadow-2xl">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold text-primary-black">Contact Us</h3>
+                    <button onclick="closeContactForm()" class="text-gray-400 hover:text-gray-600">&times;</button>
+                </div>
+                <form id="contact-form" class="mt-6 space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full rounded-full bg-primary-green py-3 font-bold text-white transition-colors duration-300 hover:bg-primary-black">Send Message</button>
+                </form>
+                <div id="contact-success" class="mt-4 hidden rounded-lg bg-green-100 p-4 text-sm text-green-700">
+                    Thank you for your message! We'll be in touch soon.
+                </div>
+            </div>
+        </div>
+
+        <div id="booking-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary-black bg-opacity-70 backdrop-blur-sm">
+            <div class="w-full max-w-lg rounded-3xl bg-white p-8 shadow-2xl">
+                <div class="flex items-center justify-between">
+                    <h3 id="tour-title" class="text-2xl font-bold text-primary-black">Book Tour</h3>
+                    <button onclick="closeBookingModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+                </div>
+                <form id="booking-form" class="mt-6 space-y-4">
+                    <input type="hidden" id="tour-price" value="">
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="pickup-location" class="block text-sm font-medium text-gray-700">Pickup Location (Hotel/Villa)</label>
+                        <input type="text" id="pickup-location" name="pickup-location" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div>
+                        <label for="excursion-date" class="block text-sm font-medium text-gray-700">Date of Excursion</label>
+                        <input type="date" id="excursion-date" name="excursion-date" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50" required>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="w-1/2">
+                            <label for="adults" class="block text-sm font-medium text-gray-700">Adults (12+)</label>
+                            <select id="adults" name="adults" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="w-1/2">
+                            <label for="children" class="block text-sm font-medium text-gray-700">Children (4-11)</label>
+                            <select id="children" name="children" class="mt-1 w-full rounded-lg border border-gray-300 p-2 focus:border-accent-blue focus:ring focus:ring-accent-blue focus:ring-opacity-50">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center font-bold text-lg mt-4">
+                        Total Cost: $<span id="total-cost">0.00</span>
+                    </div>
+                    <div class="text-center text-sm text-gray-500">
+                        <p>Children ages 0-3 are free.</p>
+                        <p>Children ages 4-11 are 30% off the adult price.</p>
+                    </div>
+                    <button type="submit" class="w-full rounded-full bg-primary-green py-3 font-bold text-white transition-colors duration-300 hover:bg-primary-black">Proceed to Payment</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="payment-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-primary-black bg-opacity-70 backdrop-blur-sm">
+            <div class="w-full max-w-md rounded-3xl bg-white p-8 text-center shadow-2xl">
+                <div class="flex justify-end">
+                    <button onclick="closePaymentModal()" class="text-gray-400 hover:text-gray-600">&times;</button>
+                </div>
+                <div id="confirmation-message" class="space-y-4">
+                    <h3 class="text-3xl font-bold text-primary-green">Thank you for your booking, <span id="guest-name"></span>!</h3>
+                    <p class="text-lg text-gray-700">Your reservation has been confirmed.</p>
+                    <p class="text-gray-600">We look forward to seeing you!</p>
+                </div>
+                <p class="mt-6 text-gray-600">Total Price: <span id="payment-total-price" class="font-bold text-xl"></span></p>
+                <p class="mt-4 text-gray-700">Please complete your payment:</p>
+                <div class="mt-6 space-y-4">
+                    <a href="#" class="inline-block w-full rounded-full bg-primary-yellow py-3 font-bold text-primary-black transition-colors duration-300 hover:bg-accent-orange">
+                        Pay with Stripe
+                    </a>
+                    <a href="https://www.paypal.com/instantcommerce/checkout/J7U33678H4B7G" target="_blank" class="inline-block w-full rounded-full bg-blue-600 py-3 font-bold text-white transition-colors duration-300 hover:bg-blue-700">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/marketing/na/us/logo-paypal-color-292x94.png" alt="Pay with PayPal" class="mx-auto h-8">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary-black py-12 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h4 class="mb-4 text-2xl font-bold">Yaad Vybz Tours</h4>
+            <p class="mb-4 text-gray-400">Montego Bay, Jamaica | info@yaadvybztours.com</p>
+            <div class="mb-8 flex justify-center space-x-6">
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.761s.784-1.761 1.75-1.761 1.75.79 1.75 1.761-.784 1.761-1.75 1.761zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.042 5.869c-.832.197-.735-.494-2.518-.466-2.77-.041-3.692-.619-3.931-1.127-.145-.306-.328-.31-.628-.31-.351 0-.585.045-.69.213-.418.665-.898 1.487-1.391 2.275-.245.385-.505.796-.799 1.157-.798.995-1.63 1.96-2.617 2.802l-1.636-1.564c-.201-.192-.489-.317-.792-.317h-1.428c-.288 0-.563.125-.75.344-.188.219-.283.518-.26.837.284 3.782.99 7.025 5.877 7.025 3.328 0 4.155-1.426 4.155-1.426v.292c0 .285-.125.556-.347.74-.222.184-.52.277-.834.277h-3.375c-.285 0-.556-.125-.74-.347-.184-.222-.277-.52-.277-.834v-3.75c0-.285.125-.556.347-.74.222-.184.52-.277.834-.277h3.75c1.23 0 2.28-.432 2.736-.931.456-.499.684-1.258.684-2.275v-.063c0-.188.086-.367.245-.491.159-.124.36-.188.56-.188h.69c.2-.001.385.086.51.245.125.159.188.36.188.56v.69c0 .693-.153 1.346-.437 1.956-.284.609-.675 1.144-1.171 1.604l.115.155c.427.568 1.054 1.059 1.77 1.458.716.399 1.517.697 2.378.883l.233.05c.47.103.957.155 1.455.155h.388c.277-.001.54-.121.72-.325.18-.205.27-.478.256-.755l-.16-3.253c-.004-.085-.015-.17-.034-.255l-.347-1.579c.007-.058.008-.118.008-.178-.002-.533-.186-1.01-.55-1.438-.364-.428-.847-.74-1.456-.932-.609-.191-1.285-.295-2.012-.315z" />
+                    </svg>
+                </a>
+                <a href="#" class="text-white hover:text-primary-yellow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.202 7.257c-.503.746-1.14 1.425-1.884 1.996.657 1.642.528 3.53-.404 5.097-1.31 2.191-3.682 3.868-6.059 4.34-1.092.217-2.22.31-3.34.288-1.574-.031-2.923-.522-4.14-1.396.953.153 1.93.072 2.827-.225 1.656-.554 2.83-1.896 3.037-3.64.08-.667-.112-1.35-.494-1.928-.275-.418-.616-.777-.996-1.109.176-.013.355-.022.533-.027 1.171-.03 2.298-.403 3.32-1.077 1.258-.838 2.062-2.164 2.378-3.771.218-1.097.135-2.225-.23-3.298l-.132-.38c.677 1.002.946 2.067.89 3.09-.047.857-.29 1.67-.714 2.373.493-.053.985-.053 1.478 0z" />
+                    </svg>
+                </a>
+                </div>
+            <p class="text-gray-400">&copy; 2025 Yaad Vybz Tours. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Functionality for smooth scrolling and mobile menu
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop;
+                        window.scrollTo({
+                            top: offsetTop - 64, // Adjust for fixed header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Booking Form functionality
+            const bookingModal = document.getElementById('booking-modal');
+            const tourTitle = document.getElementById('tour-title');
+            const tourPriceInput = document.getElementById('tour-price');
+            const totalCostSpan = document.getElementById('total-cost');
+            const adultsSelect = document.getElementById('adults');
+            const childrenSelect = document.getElementById('children');
+            const fullNameInput = document.getElementById('full-name');
+
+            window.showBookingForm = function(tourName, adultPrice) {
+                tourTitle.textContent = 'Book ' + tourName;
+                tourPriceInput.value = adultPrice;
+
+                // Reset to default values for a new booking
+                adultsSelect.value = '1';
+                childrenSelect.value = '0';
+                calculateTotalCost();
+
+                bookingModal.classList.remove('hidden');
+                bookingModal.classList.add('flex');
+            }
+
+            adultsSelect.addEventListener('change', calculateTotalCost);
+            childrenSelect.addEventListener('change', calculateTotalCost);
+
+            function calculateTotalCost() {
+                const adultPrice = parseFloat(tourPriceInput.value);
+                const numAdults = parseInt(adultsSelect.value);
+                const numChildren = parseInt(childrenSelect.value);
+
+                const childPrice = adultPrice * 0.70; // 30% off
+                const total = (numAdults * adultPrice) + (numChildren * childPrice);
+
+                totalCostSpan.textContent = total.toFixed(2);
+            }
+
+            window.closeBookingModal = function() {
+                bookingModal.classList.add('hidden');
+                bookingModal.classList.remove('flex');
+            }
+
+            // Payment Modal functionality
+            const bookingForm = document.getElementById('booking-form');
+            const paymentModal = document.getElementById('payment-modal');
+            const guestNameSpan = document.getElementById('guest-name');
+            const paymentTotalPrice = document.getElementById('payment-total-price');
+
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const guestName = fullNameInput.value.split(' ')[0]; // Gets the first name
+                const totalCost = totalCostSpan.textContent;
+
+                guestNameSpan.textContent = guestName;
+                paymentTotalPrice.textContent = '$' + totalCost;
+
+                closeBookingModal();
+                paymentModal.classList.remove('hidden');
+                paymentModal.classList.add('flex');
+            });
+
+            window.closePaymentModal = function() {
+                paymentModal.classList.add('hidden');
+                paymentModal.classList.remove('flex');
+            }
+
+            // Contact Form functionality
+            window.showContactForm = function() {
+                document.getElementById('contact-modal').classList.remove('hidden');
+                document.getElementById('contact-modal').classList.add('flex');
+            }
+
+            window.closeContactForm = function() {
+                document.getElementById('contact-modal').classList.add('hidden');
+                document.getElementById('contact-modal').classList.remove('flex');
+            }
+
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Simulate form submission
+                document.getElementById('contact-form').classList.add('hidden');
+                document.getElementById('contact-success').classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
